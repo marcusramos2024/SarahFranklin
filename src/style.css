@@ -1,0 +1,406 @@
+/* Reset some default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Red Hat Text', sans-serif;
+    background-color: #FFFFFF;
+    color: #333333;
+    line-height: 1.6;
+    /* Removed padding-top as navbar is fixed and space is managed differently */
+    overflow-x: hidden;
+}
+
+/* Navigation Bar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(197, 5, 12, 0.9); /* Semi-transparent for modern look */
+    color: #FFFFFF;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo a {
+    color: #FFFFFF;
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 1.5em;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.nav-links a i {
+    margin-right: 5px;
+}
+
+.nav-links a:hover {
+    color: #F7F7F7;
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+    display: none;
+    color: #FFFFFF;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        top: 60px;
+        left: -100%;
+        flex-direction: column;
+        background-color: rgba(197, 5, 12, 0.95);
+        width: 100%;
+        height: calc(100% - 60px);
+        transition: left 0.3s ease;
+        padding-top: 20px;
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    .nav-links li {
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+.hero {
+    position: relative;
+    height: 100vh;
+    background-image: url('file:///Users/marcusramos/Downloads/convert-3.webp');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    /* Removed background-attachment: fixed; */
+    /* Added will-change for performance optimization */
+    will-change: background-position;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(197, 5, 12, 0.5); /* Overlay to enhance text readability */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 90%;
+}
+
+.hero h1 {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 25px;
+}
+
+.cta-button {
+    background-color: #FFFFFF;
+    color: #C5050C;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.cta-button i {
+    margin-right: 5px;
+}
+
+.cta-button:hover {
+    background-color: #9B0000;
+    color: #FFFFFF;
+}
+
+/* Products Section */
+.products {
+    padding: 60px 20px;
+    background-color: #F7F7F7;
+    text-align: center;
+}
+
+.products h2 {
+    color: #C5050C;
+    margin-bottom: 30px;
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 1.8em;
+}
+
+.filter-container {
+    margin-bottom: 30px;
+}
+
+.filter-btn {
+    background-color: #FFFFFF;
+    color: #C5050C;
+    border: 2px solid #C5050C;
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: 500;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background-color: #C5050C;
+    color: #FFFFFF;
+}
+
+.product-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-card {
+    background-color: #FFFFFF;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 300px;
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.product-card h3 {
+    color: #C5050C;
+    margin: 15px 0 10px 0;
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 1.3em;
+}
+
+.product-card p {
+    color: #333333;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.buy-button {
+    background-color: #333333;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buy-button i {
+    margin-right: 5px;
+}
+
+.buy-button:hover {
+    background-color: #555555;
+}
+
+/* About Me Section */
+.about {
+    padding: 60px 20px;
+    background-color: #FFFFFF;
+    text-align: center;
+}
+
+.about h2 {
+    color: #C5050C;
+    margin-bottom: 30px;
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 1.8em;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 5px solid #C5050C;
+}
+
+.about-text {
+    font-size: 1.1em;
+    color: #333333;
+    line-height: 1.6;
+}
+
+.about-text p {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+@media (min-width: 768px) {
+    .about-content {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .profile-image {
+        margin-right: 30px;
+        margin-bottom: 0;
+    }
+
+    .about-text {
+        text-align: left;
+    }
+}
+
+/* Contact Section */
+.contact {
+    padding: 60px 20px;
+    background-color: #F7F7F7;
+    text-align: center;
+}
+
+.contact h2 {
+    color: #C5050C;
+    margin-bottom: 20px;
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 1.8em;
+}
+
+.contact p {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+.contact-button {
+    background-color: #C5050C;
+    color: #FFFFFF;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.contact-button i {
+    margin-right: 5px;
+}
+
+.contact-button:hover {
+    background-color: #9B0000;
+}
+
+/* Footer */
+footer {
+    background-color: #333333;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 20px 10px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-icons a {
+    color: #FFFFFF;
+    margin: 0 10px;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #C5050C;
+}
+
+/* Media Queries */
+@media (min-width: 600px) {
+    .products .product-grid {
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .about-content {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
