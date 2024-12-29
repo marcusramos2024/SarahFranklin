@@ -1,4 +1,3 @@
-// src/components/Products.js
 import React from "react";
 import ProductCard from "./ProductCard";
 
@@ -15,25 +14,18 @@ function Products({ products, activeFilter, handleFilter }) {
           All
         </button>
         <button
-          className={`filter-btn ${activeFilter === "tees" ? "active" : ""}`}
-          data-filter="tees"
-          onClick={() => handleFilter("tees")}
+          className={`filter-btn ${activeFilter === "shirts" ? "active" : ""}`}
+          data-filter="shirts"
+          onClick={() => handleFilter("shirts")}
         >
-          Tees
+          Shirts
         </button>
         <button
-          className={`filter-btn ${activeFilter === "shorts" ? "active" : ""}`}
-          data-filter="shorts"
-          onClick={() => handleFilter("shorts")}
+          className={`filter-btn ${activeFilter === "hats" ? "active" : ""}`}
+          data-filter="hats"
+          onClick={() => handleFilter("hats")}
         >
-          Shorts
-        </button>
-        <button
-          className={`filter-btn ${activeFilter === "hoodies" ? "active" : ""}`}
-          data-filter="hoodies"
-          onClick={() => handleFilter("hoodies")}
-        >
-          Hoodies
+          Hats
         </button>
       </div>
 
