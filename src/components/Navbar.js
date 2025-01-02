@@ -14,7 +14,7 @@ function Navbar() {
     <nav className="navbar">
       <div className="navbar-container">
         <div className="logo">
-          <a href="#home">Sarah's Apparel</a>
+          <a href="#home">Sarah's Gear</a>
         </div>
         <ul className={`nav-links ${menuActive ? "active" : ""}`}>
           <li>

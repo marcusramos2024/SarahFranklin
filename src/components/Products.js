@@ -4,7 +4,7 @@ import ProductCard from "./ProductCard";
 function Products({ products, activeFilter, handleFilter }) {
   return (
     <section id="products" className="products">
-      <h2>Our Products</h2>
+      <h2>Gear</h2>
       <div className="filter-container">
         <button
           className={`filter-btn ${activeFilter === "all" ? "active" : ""}`}
