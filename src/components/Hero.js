@@ -6,7 +6,7 @@ function Hero() {
       <div className="hero-overlay"></div>
       <div className="hero-content">
         <h1>Gear Up Like a Champion</h1>
-        <p>Shop Sarah Franklin's unused Badger gear</p>
+        <p>Shop Sarah Franklin's Unused Badger Gear</p>
         <a href="#products" className="cta-button">
           <i className="fas fa-shopping-cart"></i> Shop Now
         </a>
