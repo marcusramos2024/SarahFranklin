@@ -197,7 +197,8 @@ body {
     font-weight: 500;
 }
 
-.filter-btn.active, .filter-btn:hover {
+.filter-btn.active,
+.filter-btn:hover {
     background-color: #C5050C;
     color: #FFFFFF;
 }
@@ -208,6 +209,7 @@ body {
     align-items: center;
 }
 
+/* Original product card styling (no "expanded" approach here) */
 .product-card {
     background-color: #FFFFFF;
     border: 1px solid #dddddd;
@@ -224,6 +226,7 @@ body {
 .product-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    cursor: pointer;
 }
 
 .product-card img {
@@ -263,6 +266,88 @@ body {
 
 .buy-button:hover {
     background-color: #555555;
+}
+
+/* -----------------------
+   MODAL (POPUP) STYLES
+   ----------------------- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* above all other elements */
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+/* Close button (X) in top-right */
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+    background: transparent;
+    border: none;
+    color: #333;
+    cursor: pointer;
+}
+
+/* Images on the left side of modal (or top in mobile) */
+.modal-images {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-images img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Details (name, price, description, size) on right side */
+.modal-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-details h3 {
+    color: #C5050C;
+    font-family: 'Red Hat Display', sans-serif;
+    margin-bottom: 10px;
+}
+
+.modal-details .price {
+    color: #333333;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
+/* Responsive Modal Layout */
+@media (max-width: 768px) {
+    .modal-content {
+        flex-direction: column;
+        width: 90%;
+    }
 }
 
 /* About Me Section */
