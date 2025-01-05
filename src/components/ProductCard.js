@@ -24,12 +24,19 @@ function ProductCard({ product }) {
     <>
       {/* Product Card */}
       <div className="product-card" onClick={handleCardClick} data-category={product.category}>
-      
       {product.front_img_path && (
         <img
           src={`${process.env.REACT_APP_STORAGE_BUCKET_URL}${product.front_img_path}`}
         />
       )}
+      
+      {/* Caching purposes only */}
+        {product.back_img_path && (
+          <img className='hide'
+            src={`${process.env.REACT_APP_STORAGE_BUCKET_URL}${product.back_img_path}`}
+          />
+        )}
+      {/* Caching purposes only */}
 
         <h3>{product.name}</h3>
         <p>${product.price}</p>
