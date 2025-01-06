@@ -38,7 +38,7 @@ function ProductCard({ product }) {
         )}
       {/* Caching purposes only */}
 
-        <h3>{product.name}</h3>
+        <h3>{product.title}</h3>
         <p>${product.price}</p>
 
         <a href="#" className="buy-button" onClick={handleBuyNowClick}>
@@ -57,7 +57,7 @@ function ProductCard({ product }) {
             <div className="modal-images">
               <img
                 src={process.env.REACT_APP_STORAGE_BUCKET_URL + product.front_img_path}
-                alt={product.name}
+                alt={product.title}
               />
             {product.back_img_path && (
               <img
@@ -66,7 +66,7 @@ function ProductCard({ product }) {
             )}
             </div>
             <div className="modal-details">
-              <h3>{product.name}</h3>
+              <h3>{product.title}</h3>
               <p className="price">${product.price}</p>
               
               {product.size &&(

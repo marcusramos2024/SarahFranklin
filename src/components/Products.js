@@ -27,6 +27,13 @@ function Products({ products, activeFilter, handleFilter }) {
         >
           Hats
         </button>
+        <button
+          className={`filter-btn ${activeFilter === "hats" ? "active" : ""}`}
+          data-filter="hats"
+          onClick={() => handleFilter("pants")}
+        >
+          Pants
+        </button>
       </div>
 
       <div className="product-grid">
