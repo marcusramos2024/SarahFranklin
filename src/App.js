@@ -51,6 +51,10 @@ function App() {
   };
 
   const filteredProducts = products.filter((product) => {
+    if (product.purchased === true) {
+      return false;
+    }
+    
     if (activeFilter === "all") return true;
     return product.category === activeFilter;
   });

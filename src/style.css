@@ -484,3 +484,7 @@ footer {
         align-items: flex-start;
     }
 }
+
+.header{
+    color: red;
+}

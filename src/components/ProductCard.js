@@ -17,7 +17,7 @@ function ProductCard({ product }) {
   // Buy Now redirect
   const handleBuyNowClick = (e) => {
     e.stopPropagation(); // Prevent opening the modal
-    window.location.href = 'https://google.com';
+    window.location.href = product.stripe_link;
   };
 
   return (
