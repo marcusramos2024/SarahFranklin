@@ -28,8 +28,8 @@ function Products({ products, activeFilter, handleFilter }) {
           Hats
         </button>
         <button
-          className={`filter-btn ${activeFilter === "hats" ? "active" : ""}`}
-          data-filter="hats"
+          className={`filter-btn ${activeFilter === "pants" ? "active" : ""}`}
+          data-filter="pants"
           onClick={() => handleFilter("pants")}
         >
           Pants

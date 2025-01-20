@@ -24,22 +24,28 @@ function ProductCard({ product }) {
     <>
       {/* Product Card */}
       <div className="product-card" onClick={handleCardClick} data-category={product.category}>
-      {product.front_img_path && (
-        <img
-          src={`${process.env.REACT_APP_STORAGE_BUCKET_URL}${product.front_img_path}`}
-        />
-      )}
-      
-      {/* Caching purposes only */}
+        {product.front_img_path && (
+          <img
+            src={`${process.env.REACT_APP_STORAGE_BUCKET_URL}${product.front_img_path}`}
+          />
+        )}
+        
+        {/* Caching purposes only */}
         {product.back_img_path && (
           <img className='hide'
             src={`${process.env.REACT_APP_STORAGE_BUCKET_URL}${product.back_img_path}`}
           />
         )}
-      {/* Caching purposes only */}
+        {/* Caching purposes only */}
 
         <h3>{product.title}</h3>
         <p>${product.price}</p>
+
+        {product.size && (
+          <p>
+            <strong>Size:</strong> {product.size}
+          </p>
+        )}
 
         <a href="#" className="buy-button" onClick={handleBuyNowClick}>
           <i className="fas fa-shopping-cart"></i> Buy Now
@@ -59,26 +65,26 @@ function ProductCard({ product }) {
                 src={process.env.REACT_APP_STORAGE_BUCKET_URL + product.front_img_path}
                 alt={product.title}
               />
-            {product.back_img_path && (
-              <img
-                src={`${process.env.REACT_APP_STORAGE_BUCKET_URL}${product.back_img_path}`}
-              />
-            )}
+              {product.back_img_path && (
+                <img
+                  src={`${process.env.REACT_APP_STORAGE_BUCKET_URL}${product.back_img_path}`}
+                />
+              )}
             </div>
             <div className="modal-details">
               <h3>{product.title}</h3>
               <p className="price">${product.price}</p>
               
-              {product.size &&(
-              <p>
-                <strong>Size:</strong> {product.size}
-              </p>
+              {product.size && (
+                <p>
+                  <strong>Size:</strong> {product.size}
+                </p>
               )}
               
               {product.description && (
-              <p>
-                <strong>Description:</strong> {product.description}
-              </p>
+                <p>
+                  <strong>Description:</strong> {product.description}
+                </p>
               )}
             </div>
           </div>
