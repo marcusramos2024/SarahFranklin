@@ -7,8 +7,7 @@ import Products from "./components/Products";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
-import { createClient } from '@supabase/supabase-js';
-
+import { createClient } from "@supabase/supabase-js";
 
 const SUPABASE_URL = process.env.REACT_APP_SUPABASE_URL;
 const SUPABASE_ANON_KEY = process.env.REACT_APP_SUPABASE_ANON_KEY;
@@ -17,6 +16,7 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 function App() {
   const [activeFilter, setActiveFilter] = useState("all");
+  const [activeSizeFilter, setActiveSizeFilter] = useState("all");
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -46,17 +46,31 @@ function App() {
     fetchProducts();
   }, []);
 
+  // Handler for category filtering
   const handleFilter = (filter) => {
     setActiveFilter(filter);
   };
 
+  // Handler for size filtering
+  const handleSizeFilter = (size) => {
+    setActiveSizeFilter(size);
+  };
+
+  // Filter products based on category and size
   const filteredProducts = products.filter((product) => {
+    // Skip purchased products
     if (product.purchased === true) {
       return false;
     }
-    
-    if (activeFilter === "all") return true;
-    return product.category === activeFilter;
+    // Category filter
+    if (activeFilter !== "all" && product.category !== activeFilter) {
+      return false;
+    }
+    // Size filter
+    if (activeSizeFilter !== "all" && product.size !== activeSizeFilter) {
+      return false;
+    }
+    return true;
   });
 
   if (loading) {
@@ -76,6 +90,8 @@ function App() {
         products={filteredProducts}
         activeFilter={activeFilter}
         handleFilter={handleFilter}
+        activeSizeFilter={activeSizeFilter}
+        handleSizeFilter={handleSizeFilter}
       />
 
       <Contact />
