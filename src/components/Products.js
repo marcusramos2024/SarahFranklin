@@ -20,22 +20,44 @@ function Products({
     setCurrentPage(1);
   }, [products, activeFilter, activeSizeFilter]);
 
+  // Define your desired category order.
+  const categoryOrder = [
+    "hats",
+    "sweatshirts",
+    "longsleeves",
+    "tshirts",
+    "shorts",
+    "pants",
+    "jerseys"
+  ];
+
   // Apply filtering based on the active filter selections.
-  let filteredProducts = products;
+  let filteredProducts = [];
 
   if (activeFilter !== "all") {
-    // If a style (category) filter is active, show only that category.
+    // If a style (category) filter is active, filter by category.
     filteredProducts = products.filter(
       (product) => product.category === activeFilter
     );
   } else if (activeSizeFilter !== "all") {
-    // If a size filter is active (and no style filter), show only products of that size.
+    // If a size filter is active, filter by size...
     filteredProducts = products.filter(
       (product) => product.size === activeSizeFilter
     );
+    // ...then sort by the defined category order.
+    filteredProducts.sort((a, b) => {
+      const aIndex = categoryOrder.indexOf(a.category);
+      const bIndex = categoryOrder.indexOf(b.category);
+      return aIndex - bIndex;
+    });
   } else {
-    // Both filters are "all" – show all products without any filtering.
-    filteredProducts = products;
+    // No filter is active – clone and sort the products by category order.
+    filteredProducts = [...products];
+    filteredProducts.sort((a, b) => {
+      const aIndex = categoryOrder.indexOf(a.category);
+      const bIndex = categoryOrder.indexOf(b.category);
+      return aIndex - bIndex;
+    });
   }
 
   // Calculate pagination variables.
@@ -44,7 +66,7 @@ function Products({
   const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
 
-  // Pagination handlers
+  // Pagination handlers.
   const handleNextPage = () => {
     if (currentPage < totalPages) {
       setCurrentPage((prev) => prev + 1);
