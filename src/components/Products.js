@@ -88,13 +88,13 @@ function Products({
           className="open-filters-btn"
           onClick={() => setShowStyleFilters(true)}
         >
-          <i className="fas fa-tshirt"></i> Style Filters
+          <i className="fas fa-tshirt"></i> Sort By Article
         </button>
         <button
           className="open-filters-btn"
           onClick={() => setShowSizeFilters(true)}
         >
-          <i className="fas fa-arrows-alt-h"></i> Size Filters
+          <i className="fas fa-arrows-alt-h"></i> Sort By Size
         </button>
       </div>
 
