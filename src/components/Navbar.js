@@ -1,23 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 
 function Navbar() {
-  const [menuActive, setMenuActive] = useState(false);
-
-  const handleMenuToggle = () => {
-    setMenuActive(!menuActive);
-  };
-
   return (
     <nav className="navbar">
       <div className="navbar-container">
         <div className="logo">
           <a href="#home">Sarah's Gear</a>
         </div>
-        <div
-          className={`menu-overlay ${menuActive ? "active" : ""}`}
-          onClick={handleMenuToggle}
-        ></div>
-        <ul className={`nav-links ${menuActive ? "active" : ""}`}>
+        <ul className="nav-links">
           <li>
             <a href="#home">
               <i className="fas fa-home"></i> Home
@@ -34,12 +24,6 @@ function Navbar() {
             </a>
           </li>
         </ul>
-        <div
-          className={`menu-toggle ${menuActive ? "active" : ""}`}
-          onClick={handleMenuToggle}
-        >
-          <i className={`fas ${menuActive ? "fa-times" : "fa-bars"}`}></i>
-        </div>
       </div>
     </nav>
   );

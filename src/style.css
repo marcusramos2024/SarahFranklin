@@ -46,8 +46,8 @@
     opacity: 0.8;
   }
   
-  /* Nav Links */
-  .nav-links {
+/* Nav Links */
+.nav-links {
     list-style: none;
     display: flex;
     align-items: center;
@@ -75,79 +75,32 @@
     transform: translateY(-2px);
   }
   
-  /* Mobile Menu Toggle */
-  .menu-toggle {
-    display: none;
-    color: #FFFFFF;
-    font-size: 1.5em;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  
-  .menu-toggle.active {
-    transform: rotate(90deg);
-  }
-  
-  /* Mobile Overlay Menu */
-  .menu-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 999;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  .menu-overlay.active {
-    display: block;
-    opacity: 1;
-  }
+  /* Removed hamburger menu and overlay CSS as they are no longer needed */
   
   /* Mobile Styles */
   @media (max-width: 768px) {
     .navbar-container {
       padding: 10px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-  
+    
+    /* On mobile, keep nav-links always visible and in a row */
     .nav-links {
-      position: fixed;
-      top: 0;
-      left: -100%;
-      flex-direction: column;
-      background-color: rgba(197, 5, 12, 0.98);
-      width: 80%;
-      height: 100vh;
-      padding-top: 80px;
-      transition: left 0.3s ease;
-      z-index: 1000;
+      display: flex;
+      flex-direction: row;
     }
-  
-    .nav-links.active {
-      left: 0;
-    }
-  
+    
     .nav-links li {
-      margin: 25px 0;
-      text-align: left;
-      padding-left: 20px;
+      margin-left: 15px;
     }
-  
+    
     .nav-links a {
-      font-size: 1.2em;
-    }
-  
-    .menu-toggle {
-      display: block;
-    }
-  
-    .menu-overlay {
-      display: block;
+      font-size: 1em;
     }
   }
+  
 .hero {
     position: relative;
     height: 100vh;
