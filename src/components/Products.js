@@ -3,11 +3,12 @@ import ProductCard from "./ProductCard";
 
 function Products({
   products,
-  activeFilter,
-  handleFilter,
-  activeSizeFilter = "all",
+  activeFilter, // style/category filter, e.g. "hats", "sweatshirts", etc.
+  handleFilter, // handler to update the active style filter
+  activeSizeFilter = "all", // size filter, e.g. "L", "XL", etc.
   handleSizeFilter = () => {}
 }) {
+  // State to show/hide the filters modals
   const [showStyleFilters, setShowStyleFilters] = useState(false);
   const [showSizeFilters, setShowSizeFilters] = useState(false);
 
@@ -15,12 +16,12 @@ function Products({
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
-  // Whenever the products or filters change, reset the page to 1.
+  // Whenever products or filters change, reset the page to 1.
   useEffect(() => {
     setCurrentPage(1);
   }, [products, activeFilter, activeSizeFilter]);
 
-  // Define your desired category order.
+  // Define the desired category order for sorting purposes.
   const categoryOrder = [
     "hats",
     "sweatshirts",
@@ -31,42 +32,37 @@ function Products({
     "jerseys"
   ];
 
-  // Apply filtering based on the active filter selections.
-  let filteredProducts = [];
+  // ========= FILTERING LOGIC =========
+  // Start with all products and then apply each filter if its value isn’t "all".
+  let filteredProducts = [...products];
 
   if (activeFilter !== "all") {
-    // If a style (category) filter is active, filter by category.
-    filteredProducts = products.filter(
+    filteredProducts = filteredProducts.filter(
       (product) => product.category === activeFilter
     );
-  } else if (activeSizeFilter !== "all") {
-    // If a size filter is active, filter by size...
-    filteredProducts = products.filter(
-      (product) => product.size === activeSizeFilter
-    );
-    // ...then sort by the defined category order.
-    filteredProducts.sort((a, b) => {
-      const aIndex = categoryOrder.indexOf(a.category);
-      const bIndex = categoryOrder.indexOf(b.category);
-      return aIndex - bIndex;
-    });
-  } else {
-    // No filter is active – clone and sort the products by category order.
-    filteredProducts = [...products];
-    filteredProducts.sort((a, b) => {
-      const aIndex = categoryOrder.indexOf(a.category);
-      const bIndex = categoryOrder.indexOf(b.category);
-      return aIndex - bIndex;
-    });
   }
 
-  // Calculate pagination variables.
+  if (activeSizeFilter !== "all") {
+    filteredProducts = filteredProducts.filter(
+      (product) => product.size === activeSizeFilter
+    );
+  }
+
+  // Always sort the filtered products by the defined category order.
+  filteredProducts.sort((a, b) => {
+    const aIndex = categoryOrder.indexOf(a.category);
+    const bIndex = categoryOrder.indexOf(b.category);
+    return aIndex - bIndex;
+  });
+  // ========= END FILTERING LOGIC =========
+
+  // ========= PAGINATION =========
   const indexOfLastProduct = currentPage * itemsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - itemsPerPage;
   const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
 
-  // Pagination handlers.
+  // Handlers for pagination navigation.
   const handleNextPage = () => {
     if (currentPage < totalPages) {
       setCurrentPage((prev) => prev + 1);
@@ -78,19 +74,21 @@ function Products({
       setCurrentPage((prev) => prev - 1);
     }
   };
+  // ========= END PAGINATION =========
 
-  // Filtering handlers: When one filter is clicked, reset the other to "all".
+  // ========= FILTER CLICK HANDLERS =========
+  // When a style filter is clicked, update the activeFilter and close the modal.
   const onStyleFilterClick = (value) => {
     handleFilter(value);
-    handleSizeFilter("all");
     setShowStyleFilters(false);
   };
 
+  // When a size filter is clicked, update the activeSizeFilter and close the modal.
   const onSizeFilterClick = (value) => {
     handleSizeFilter(value);
-    handleFilter("all");
     setShowSizeFilters(false);
   };
+  // ========= END FILTER HANDLERS =========
 
   return (
     <section id="products" className="products">
@@ -102,7 +100,7 @@ function Products({
           className="open-filters-btn"
           onClick={() => setShowStyleFilters(true)}
         >
-          <i className="fas fa-tshirt"></i> Sort By Article
+          <i className="fas fa-tshirt"></i> Sort By Type
         </button>
         <button
           className="open-filters-btn"
@@ -112,7 +110,36 @@ function Products({
         </button>
       </div>
 
-      {/* Style Filters Modal */}
+      {/* ========= ACTIVE FILTERS VISUAL INDICATOR ========= */}
+      {(activeFilter !== "all" || activeSizeFilter !== "all") && (
+        <div className="active-filters">
+          {activeFilter !== "all" && (
+            <span className="active-filter">
+              {activeFilter}
+              <button
+                onClick={() => handleFilter("all")}
+                className="remove-filter"
+              >
+                &times;
+              </button>
+            </span>
+          )}
+          {activeSizeFilter !== "all" && (
+            <span className="active-filter">
+              {activeSizeFilter}
+              <button
+                onClick={() => handleSizeFilter("all")}
+                className="remove-filter"
+              >
+                &times;
+              </button>
+            </span>
+          )}
+        </div>
+      )}
+      {/* ========= END ACTIVE FILTERS VISUAL ========= */}
+
+      {/* ========= STYLE FILTERS MODAL ========= */}
       {showStyleFilters && (
         <div className="filters-modal">
           <div className="filters-panel">
@@ -123,7 +150,7 @@ function Products({
               &times;
             </button>
             <div className="filter-section">
-              <h3>Filter by Style</h3>
+              <h3>Filter by Type</h3>
               <button
                 className={`filter-btn ${activeFilter === "all" ? "active" : ""}`}
                 onClick={() => onStyleFilterClick("all")}
@@ -166,13 +193,19 @@ function Products({
               >
                 Pants
               </button>
-
+              <button
+                className={`filter-btn ${activeFilter === "jerseys" ? "active" : ""}`}
+                onClick={() => onStyleFilterClick("jerseys")}
+              >
+                Signed Jerseys
+              </button>
             </div>
           </div>
         </div>
       )}
+      {/* ========= END STYLE FILTERS MODAL ========= */}
 
-      {/* Size Filters Modal */}
+      {/* ========= SIZE FILTERS MODAL ========= */}
       {showSizeFilters && (
         <div className="filters-modal">
           <div className="filters-panel">
@@ -242,15 +275,16 @@ function Products({
           </div>
         </div>
       )}
+      {/* ========= END SIZE FILTERS MODAL ========= */}
 
-      {/* Product Grid */}
+      {/* ========= PRODUCT GRID ========= */}
       <div className="product-grid">
         {currentProducts.map((prod) => (
           <ProductCard product={prod} key={prod.id} />
         ))}
       </div>
 
-      {/* Pagination Controls with Arrow Icons */}
+      {/* ========= PAGINATION CONTROLS ========= */}
       {totalPages > 1 && (
         <div className="pagination">
           <button
