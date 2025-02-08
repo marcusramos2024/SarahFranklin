@@ -254,11 +254,11 @@
 }
 
 @media (max-width: 768px) {
-    .product-card img.hide {
-      display: none;
-    }
+  .product-card img.hide {
+    display: none;
   }
-  
+}
+
 
 .buy-button {
     background-color: #333333;
@@ -496,3 +496,138 @@ footer {
 .header{
     color: red;
 }
+/* Container for the two filter buttons */
+.filter-buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  
+  /* --- Open Filter Button (applied to both buttons) --- */
+  .open-filters-btn {
+    background-color: #C5050C;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .open-filters-btn i {
+    font-size: 1.2em;
+  }
+  
+  .open-filters-btn:hover {
+    background-color: #9B0000;
+  }
+  
+  /* --- Filters Modal Overlay --- */
+  .filters-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* --- Filters Panel --- */
+  .filters-panel {
+    position: relative;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+  }
+  
+  /* Close button inside filter modal */
+  .close-filters-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+  }
+  
+  /* --- Filter Section --- */
+  .filter-section {
+    margin-bottom: 20px;
+  }
+  
+  .filter-section h3 {
+    margin-bottom: 10px;
+    color: #C5050C;
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 1.2em;
+  }
+  
+  /* Use your existing filter-btn styling */
+  .filter-btn {
+    background-color: #FFFFFF;
+    color: #C5050C;
+    border: 2px solid #C5050C;
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: 500;
+  }
+  
+  .filter-btn.active,
+  .filter-btn:hover {
+    background-color: #C5050C;
+    color: #FFFFFF;
+  }
+  
+ /* Pagination Controls */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+  }
+  
+  .pagination-btn {
+    background-color: #C5050C;
+    color: #FFFFFF;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1.2em; /* Makes sure the arrow icons are clearly visible */
+  }
+  
+  .pagination-btn:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+  }
+  
+  .pagination-info {
+    font-size: 1em;
+    color: #333;
+  }
+  
