@@ -253,6 +253,13 @@
     font-size: 1.1em;
 }
 
+@media (max-width: 768px) {
+    .product-card img.hide {
+      display: none;
+    }
+  }
+  
+
 .buy-button {
     background-color: #333333;
     color: #FFFFFF;

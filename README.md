@@ -74,3 +74,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 - Default sort by product in all
 - Only front image on mobile, both on desktop
+- Draw attention to jersey
