@@ -24,26 +24,18 @@ function Products({
   let filteredProducts = products;
 
   if (activeFilter !== "all") {
-    // If a style filter is active, show only that style.
-    filteredProducts = products.filter(product => product.style === activeFilter);
+    // If a style (category) filter is active, show only that category.
+    filteredProducts = products.filter(
+      (product) => product.category === activeFilter
+    );
   } else if (activeSizeFilter !== "all") {
     // If a size filter is active (and no style filter), show only products of that size.
-    filteredProducts = products.filter(product => product.size === activeSizeFilter);
+    filteredProducts = products.filter(
+      (product) => product.size === activeSizeFilter
+    );
   } else {
-    // Both filters are "all" – sort the products in a custom order.
-    // Adjust the order below as desired.
-    const styleOrder = [
-      "tshirts",
-      "longsleeves",
-      "sweatshirts",
-      "hats",
-      "shorts",
-      "pants",
-      "jerseys"
-    ];
-    filteredProducts = [...products].sort((a, b) => {
-      return styleOrder.indexOf(a.style) - styleOrder.indexOf(b.style);
-    });
+    // Both filters are "all" – show all products without any filtering.
+    filteredProducts = products;
   }
 
   // Calculate pagination variables.
@@ -55,13 +47,13 @@ function Products({
   // Pagination handlers
   const handleNextPage = () => {
     if (currentPage < totalPages) {
-      setCurrentPage(prev => prev + 1);
+      setCurrentPage((prev) => prev + 1);
     }
   };
 
   const handlePrevPage = () => {
     if (currentPage > 1) {
-      setCurrentPage(prev => prev - 1);
+      setCurrentPage((prev) => prev - 1);
     }
   };
 
