@@ -14,13 +14,6 @@ function Products({ products, activeFilter, handleFilter }) {
           All
         </button>
         <button
-          className={`filter-btn ${activeFilter === "shirts" ? "active" : ""}`}
-          data-filter="shirts"
-          onClick={() => handleFilter("shirts")}
-        >
-          Shirts
-        </button>
-        <button
           className={`filter-btn ${activeFilter === "hats" ? "active" : ""}`}
           data-filter="hats"
           onClick={() => handleFilter("hats")}
@@ -28,11 +21,46 @@ function Products({ products, activeFilter, handleFilter }) {
           Hats
         </button>
         <button
+          className={`filter-btn ${activeFilter === "sweatshirts" ? "active" : ""}`}
+          data-filter="sweatshirts"
+          onClick={() => handleFilter("sweatshirts")}
+        >
+          Sweatshirts
+        </button>
+        <button
+          className={`filter-btn ${activeFilter === "longsleeves" ? "active" : ""}`}
+          data-filter="longsleeves"
+          onClick={() => handleFilter("longsleeves")}
+        >
+          Long Sleeve Shirts
+        </button>
+        <button
+          className={`filter-btn ${activeFilter === "tshirts" ? "active" : ""}`}
+          data-filter="tshirts"
+          onClick={() => handleFilter("tshirts")}
+        >
+          T-Shirts
+        </button>
+        <button
+          className={`filter-btn ${activeFilter === "shorts" ? "active" : ""}`}
+          data-filter="shorts"
+          onClick={() => handleFilter("shorts")}
+        >
+          Shorts
+        </button>
+        <button
           className={`filter-btn ${activeFilter === "pants" ? "active" : ""}`}
           data-filter="pants"
           onClick={() => handleFilter("pants")}
         >
           Pants
+        </button>
+        <button
+          className={`filter-btn ${activeFilter === "jerseys" ? "active" : ""}`}
+          data-filter="jerseys"
+          onClick={() => handleFilter("jerseys")}
+        >
+          Signed Jerseys
         </button>
       </div>
 

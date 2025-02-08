@@ -1,11 +1,8 @@
-// src/components/Navbar.js
 import React, { useState } from "react";
 
 function Navbar() {
-  // State for mobile menu toggle
   const [menuActive, setMenuActive] = useState(false);
 
-  // Toggle mobile menu
   const handleMenuToggle = () => {
     setMenuActive(!menuActive);
   };
@@ -16,6 +13,10 @@ function Navbar() {
         <div className="logo">
           <a href="#home">Sarah's Gear</a>
         </div>
+        <div
+          className={`menu-overlay ${menuActive ? "active" : ""}`}
+          onClick={handleMenuToggle}
+        ></div>
         <ul className={`nav-links ${menuActive ? "active" : ""}`}>
           <li>
             <a href="#home">
@@ -28,11 +29,6 @@ function Navbar() {
             </a>
           </li>
           <li>
-            <a href="#about">
-              <i className="fas fa-user"></i> About Me
-            </a>
-          </li>
-          <li>
             <a href="#contact">
               <i className="fas fa-envelope"></i> Contact
             </a>
@@ -42,7 +38,7 @@ function Navbar() {
           className={`menu-toggle ${menuActive ? "active" : ""}`}
           onClick={handleMenuToggle}
         >
-          <i className="fas fa-bars"></i>
+          <i className={`fas ${menuActive ? "fa-times" : "fa-bars"}`}></i>
         </div>
       </div>
     </nav>
