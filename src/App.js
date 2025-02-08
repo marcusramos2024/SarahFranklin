@@ -1,9 +1,11 @@
+// App.js
 import React, { useState, useEffect } from "react";
 import "./style.css";
 
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Products from "./components/Products";
+import SignedJerseysCarousel from "./components/SignedJerseysCarousel"; // NEW IMPORT
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
@@ -56,17 +58,14 @@ function App() {
     setActiveSizeFilter(size);
   };
 
-  // Filter products based on category and size
+  // Filter products based on category and size (excluding purchased items)
   const filteredProducts = products.filter((product) => {
-    // Skip purchased products
     if (product.purchased === true) {
       return false;
     }
-    // Category filter
     if (activeFilter !== "all" && product.category !== activeFilter) {
       return false;
     }
-    // Size filter
     if (activeSizeFilter !== "all" && product.size !== activeSizeFilter) {
       return false;
     }
@@ -93,6 +92,9 @@ function App() {
         activeSizeFilter={activeSizeFilter}
         handleSizeFilter={handleSizeFilter}
       />
+
+      {/* New Carousel Section for Signed Jerseys */}
+      <SignedJerseysCarousel products={products} />
 
       <Contact />
       <Footer />

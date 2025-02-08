@@ -19,6 +19,11 @@ function Navbar() {
             </a>
           </li>
           <li>
+            <a href="#signed-jerseys-carousel">
+            <i class="fa-solid fa-pen-fancy"></i>Signed
+            </a>
+          </li>
+          <li>
             <a href="#contact">
               <i className="fas fa-envelope"></i> Contact
             </a>

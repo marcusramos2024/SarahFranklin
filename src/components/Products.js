@@ -166,12 +166,7 @@ function Products({
               >
                 Pants
               </button>
-              <button
-                className={`filter-btn ${activeFilter === "jerseys" ? "active" : ""}`}
-                onClick={() => onStyleFilterClick("jerseys")}
-              >
-                Signed Jerseys
-              </button>
+
             </div>
           </div>
         </div>
