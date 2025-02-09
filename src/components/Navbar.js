@@ -13,11 +13,11 @@ function Navbar() {
               <i className="fas fa-home"></i> Home
             </a>
           </li>
-          <li>
+          {/* <li>
             <a href="#products">
               <i className="fas fa-tshirt"></i> Products
             </a>
-          </li>
+          </li> */}
           <li>
             <a href="#signed-jerseys-carousel">
             <i class="fa-solid fa-pen-fancy"></i>Signed
