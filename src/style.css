@@ -801,3 +801,8 @@ footer {
 .active-filter .remove-filter:hover {
   color: #ddd;
 }
+
+
+.hero-span{
+  font-weight: bold;
+}
