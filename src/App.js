@@ -87,14 +87,14 @@ function App() {
       <Hero />
 
       {
-      /*<Products
+      <Products
         products={filteredProducts}
         activeFilter={activeFilter}
         handleFilter={handleFilter}
         activeSizeFilter={activeSizeFilter}
         handleSizeFilter={handleSizeFilter}
       />
-      */
+      
       }
 
       {/* New Carousel Section for Signed Jerseys */}
